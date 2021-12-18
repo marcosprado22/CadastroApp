@@ -1,31 +1,33 @@
 package br.com.cadastroapp.controller;
 
-import br.com.cadastroapp.dto.DadosLogin;
 import br.com.cadastroapp.dto.UserAuthenticationDTO;
+import br.com.cadastroapp.dto.UserRegistrationDTO;
+import br.com.cadastroapp.model.User;
 import br.com.cadastroapp.service.UserAuthenticationService;
+import br.com.cadastroapp.service.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
+
 
 public class UserRegistrationController {
 
-    private UserAuthenticationService userAuthenticationService;
+    private UserRegistrationService userRegistrationService;
 
     @Autowired
-    public AuthenticationController(UserAuthenticationService userAuthenticationService){
-        this.userAuthenticationService = userAuthenticationService;
+    public UserRegistrationController(UserAuthenticationService userAuthenticationService){
+        this.userRegistrationService = userRegistrationService;
     }
 
-    public AuthenticationController(){
+    public UserRegistrationController(){
 
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<UserAuthenticationDTO> autenticar(@RequestBody DadosLogin dadosLogin, @RequestHeader String Authorization){
-       User user = userAuthenticationService.authenticate(dadosLogin, Authorization);
-       return new ResponseEntity<UserAuthenticationDTO>(UserAuthenticationDTO.toDTO(user, "Bearer "), HttpStatus.ACCEPTED);
+    @PostMapping("/user")
+    public ResponseEntity<UserAuthenticationDTO> registrar(@RequestBody UserRegistrationDTO userRegistrationDTO){
+       User user = userRegistrationService.registrar(userRegistrationDTO.toUser());
+       return new ResponseEntity<UserAuthenticationDTO>(UserAuthenticationDTO.toDTO(user, "Bearer "), HttpStatus.CREATED);
     }
 }

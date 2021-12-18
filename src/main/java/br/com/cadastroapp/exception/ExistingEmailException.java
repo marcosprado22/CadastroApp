@@ -1,4 +1,4 @@
 package br.com.cadastroapp.exception;
 
-public class ExistingEmailException {
+public class ExistingEmailException extends RuntimeException {
 }

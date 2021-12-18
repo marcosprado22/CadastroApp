@@ -1,4 +1,5 @@
 package br.com.cadastroapp.exception;
 
-public class InvalidLoginException {
+public class InvalidLoginException extends RuntimeException {
+
 }
