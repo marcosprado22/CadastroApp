@@ -1,12 +1,15 @@
 package br.com.cadastroapp.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.math.BigDecimal;
+
 
 @Entity
 public class User {
+
+
 
     @Id
     @GeneratedValue
@@ -16,6 +19,9 @@ public class User {
     private String email;
     private String senha;
     private String token;
+    private String statusCode;
+    private BigDecimal credit;
+
 
     public User(Long id, String nome, String email, String senha){
         this.id = id;
@@ -30,6 +36,10 @@ public class User {
         this.senha = senha;
     }
 
+    public User(String statusCode, BigDecimal credit){
+        this.statusCode = statusCode;
+        this.credit = credit;
+    }
     public User(){}
 
     public String getNome() {
@@ -70,5 +80,21 @@ public class User {
 
     public String getToken() {
         return token;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public BigDecimal getCredit() {
+        return credit;
+    }
+
+    public void setCredit(BigDecimal credit) {
+        this.credit = credit;
     }
 }

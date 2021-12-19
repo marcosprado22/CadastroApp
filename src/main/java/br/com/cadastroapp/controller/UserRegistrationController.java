@@ -30,4 +30,5 @@ public class UserRegistrationController {
        User user = userRegistrationService.registrar(userRegistrationDTO.toUser());
        return new ResponseEntity<UserAuthenticationDTO>(UserAuthenticationDTO.toDTO(user, "Bearer "), HttpStatus.CREATED);
     }
+
 }
