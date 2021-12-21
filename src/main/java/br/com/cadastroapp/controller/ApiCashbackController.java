@@ -1,11 +1,9 @@
 package br.com.cadastroapp.controller;
 
-import br.com.cadastroapp.dto.ApiCashbackDTO;
+
+import br.com.cadastroapp.entity.ApiCashbackEntity;
 import br.com.cadastroapp.service.ApiCashbackService;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,13 +22,9 @@ public class ApiCashbackController {
     }
 
 
-    @GetMapping("/cashback")
-    public ResponseEntity<ApiCashbackDTO> buscar(@RequestBody ApiCashbackDTO apiCashbackDTO) {
-        if (apiCashbackDTO.buscar().isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        Logger logger = null;
-        logger.info(apiCashbackService.buscar());
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping("/cashback/{id}")
+    public ApiCashbackEntity findById(@PathVariable Long id){
+        return ApiCashbackService.findById(id);
     }
+
 }

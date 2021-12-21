@@ -1,5 +1,6 @@
 package br.com.cadastroapp.service;
 
+import br.com.cadastroapp.entity.ProdutoEntity;
 import br.com.cadastroapp.model.Produto;
 import br.com.cadastroapp.repository.ProdutoRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -15,55 +19,37 @@ public class ProdutoService {
     @Autowired
     private final ProdutoRepository produtoRepository;
 
-    public ProdutoService(ProdutoRepository produtoRepository){
-        this.produtoRepository = produtoRepository;
-    }
-
-    public Iterable<Produto> getProduto(){
-        log.info("Recuperando todos os produtos");
+    public List<ProdutoEntity> findAll() {
         return produtoRepository.findAll();
     }
 
-    public Produto getProduto(String id){
-        log.info("Recuperando produto pelo id {}", id);
-        return produtoRepository.findById(id).orElseThrow(() -> {
-            return new RuntimeException(String.format("Produto=[%s] não foi encontrado", id));
-        });
+    public ProdutoEntity findById(Long id) {
+        Optional<ProdutoEntity> entity = produtoEntity.findById(id);
+        if(entity.isPresent()) {
+            return entity.get();
+        }
+        throw new RuntimeException();
     }
 
-    public Produto deleteProduto(String id){
-        log.info("Excluindo produto pelo id {} ", id);
-        Produto produto = produtoRepository.findById(id).orElseThrow(() -> {
-            return new RuntimeException(String.format("Produto=[%s] não foi encontrado", id));
-        });
+    public ProdutoEntity save(ProdutoDTO dto){
+        ProdutoEntity entity = new ProdutoEntity();
+        entity.setId(dto.getId());
+        entity.setCodigo(dto.getCodigo());
+        entity.setDescricao(dto.getDescricao());
+        entity.setValor(dto.getValor());
+        return produtoRepository.save(entity);
+    }
+
+    public ProdutoEntity update(ProdutoEntity entity, ProdutoDTO dto){
+        entity.setId(dto.getId());
+        entity.setCodigo(dto.getCodigo());
+        entity.setDescricao(dto.getDescricao());
+        entity.setValor(dto.getValor());
+        return produtoRepository.save(entity);
+    }
+
+    public void delete(Long id) {
         produtoRepository.deleteById(id);
-        return produto;
     }
-
-    public Produto createProduto(String id){
-        Produto produto = Produto.builder().codigo(codigo).descricao(descricao).valor(valor).data(data).build();
-        log.info("Criando {}", produto);
-        return produtoRepository.salvar(produto);
-    }
-
-    public Produto updateProduto(String id, String codigo, BigDecimal valor) {
-        log.info("Atualizando produto pelo id {}", id);
-        Produto produto = produtoRepository.findById(id).orElseThrow(() -> {
-            return new RuntimeException(String.format("Produto=[%s] não foi encontrado", id));
-        });
-    }
-        if (codigo != null){
-            produto.setCodigo(codigo);
-        }
-
-        if (descricao != null){
-            produto.setDescricao(descricao);
-        }
-
-        public Iterable<Produto> getProdutobyId(String id) {
-            log.info("Recuperando produto pelo codigo {}", codigo);
-            Iterable<Produto> produto = produtoRepository.findById(String id);
-            return produto;
-        }
 }
 

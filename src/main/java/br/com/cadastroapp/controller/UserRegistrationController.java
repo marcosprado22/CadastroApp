@@ -1,7 +1,7 @@
 package br.com.cadastroapp.controller;
 
-import br.com.cadastroapp.dto.UserAuthenticationDTO;
-import br.com.cadastroapp.dto.UserRegistrationDTO;
+import br.com.cadastroapp.entity.dto.UserAuthenticationDTO;
+import br.com.cadastroapp.entity.dto.UserRegistrationDTO;
 import br.com.cadastroapp.model.User;
 import br.com.cadastroapp.service.UserAuthenticationService;
 import br.com.cadastroapp.service.UserRegistrationService;

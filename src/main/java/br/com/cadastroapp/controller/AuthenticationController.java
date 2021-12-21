@@ -1,7 +1,8 @@
 package br.com.cadastroapp.controller;
 
-import br.com.cadastroapp.dto.DadosLogin;
-import br.com.cadastroapp.dto.UserAuthenticationDTO;
+
+import br.com.cadastroapp.entity.dto.DadosLogin;
+import br.com.cadastroapp.entity.dto.UserAuthenticationDTO;
 import br.com.cadastroapp.model.User;
 import br.com.cadastroapp.service.UserAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package br.com.cadastroapp.service;
 
-import br.com.cadastroapp.dto.DadosLogin;
+import br.com.cadastroapp.entity.dto.DadosLogin;
 import br.com.cadastroapp.exception.ExistingEmailException;
 import br.com.cadastroapp.exception.ExpiredTokenException;
 import br.com.cadastroapp.exception.InvalidLoginException;

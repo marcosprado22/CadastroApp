@@ -5,17 +5,19 @@ import java.math.BigDecimal;
 
 public class ProdutoDTO {
 
-    private String id;
 
     private String codigo;
     private String descricao;
+    private BigDecimal valor;
 
-    public String getId() {
-        return id;
+    public ProdutoDTO(){
+
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public ProdutoDTO(String codigo, String descricao, BigDecimal valor){
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.valor = valor;
     }
 
     public String getCodigo() {
@@ -42,16 +44,5 @@ public class ProdutoDTO {
         this.valor = valor;
     }
 
-    private BigDecimal valor;
-
-    public ProdutoDTO(){
-    }
-
-    public ProdutoDTO(String id, String codigo, String descricao, BigDecimal valor){
-        this.id = id;
-        this.codigo = codigo;
-        this.descricao = descricao;
-        this.valor = valor;
-    }
 
 }

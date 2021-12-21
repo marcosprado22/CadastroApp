@@ -10,7 +10,7 @@ public class Produto {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
     private String codigo;
     private String descricao;
@@ -18,7 +18,7 @@ public class Produto {
     private Date data;
     private Boolean emValidacao = true;
 
-    public Produto(String id, String codigo, String descricao, BigDecimal valor, Date data, Boolean emValidacao) {
+    public Produto(Long id, String codigo, String descricao, BigDecimal valor, Date data, Boolean emValidacao) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -27,7 +27,7 @@ public class Produto {
         this.emValidacao = emValidacao;
     }
 
-    public Produto(String id, String codigo, String descricao, BigDecimal valor, Date data) {
+    public Produto(Long id, String codigo, String descricao, BigDecimal valor, Date data) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -36,11 +36,11 @@ public class Produto {
 
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
