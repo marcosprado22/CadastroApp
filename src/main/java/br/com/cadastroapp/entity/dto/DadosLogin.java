@@ -1,4 +1,4 @@
-package br.com.cadastroapp.dto;
+package br.com.cadastroapp.entity.dto;
 
 public class DadosLogin {
 

@@ -1,4 +1,4 @@
-package br.com.cadastroapp.dto;
+package br.com.cadastroapp.entity.dto;
 
 import br.com.cadastroapp.model.User;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;

@@ -1,22 +1,20 @@
-package br.com.cadastroapp.dto;
-
-import br.com.cadastroapp.model.User;
-import org.apache.logging.log4j.ThreadContext;
+package br.com.cadastroapp.entity.dto;
 
 
 import java.math.BigDecimal;
-import java.util.Map;
 
 public class ApiCashbackDTO {
 
     private String statusCode;
     private BigDecimal credit;
 
-    public ApiCashbackDTO(String statusCode, BigDecimal credit) {
+    public ApiCashbackDTO() {
+
     }
 
-    public static ApiCashbackDTO toDTO(User user) {
-        return new ApiCashbackDTO(user.getStatusCode(), user.getCredit());
+    public ApiCashbackDTO(String statusCode, BigDecimal credit) {
+        this.statusCode = statusCode;
+        this.credit = credit;
     }
 
     public String getStatusCode() {
@@ -33,11 +31,6 @@ public class ApiCashbackDTO {
 
     public void setCredit(BigDecimal credit) {
         this.credit = credit;
-    }
-
-
-    public Map<Object, Object> buscar() {
-        return null;
     }
 }
 
